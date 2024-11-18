@@ -1,0 +1,184 @@
+*{margin: 0;padding: 0;}
+:root{
+  background: rgba(0,0,0,0.8);
+  font-size: 14px;
+}
+body{position: relative;height: 100vh;}
+.box {
+  width: 100px;
+  height: 100px;
+  background: green;
+  position: absolute;
+  animation: gol 4s linear infinite;
+}
+@keyframes gol{
+  0%, 100%{top: 0;left:0; transform: rotate(0deg)}
+  25%{top: calc(100% - 100px);left: 0;transform: rotate(360deg)}
+  50%{top: calc(100% - 100px);left: calc(100% - 100px);transform: rotate(720deg)}
+  75%{top: 0;left: calc(100% - 100px);transform: rotate(1080deg)}
+  99.9%{top: 0;left: 0;transform: rotate(1440deg)}
+}
+.sun {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: orangered;
+  background: radial-gradient(circle, orange, yellow);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.sun::before, .sun::after{
+  content: "";
+  display: block;
+  width:400%;
+  height: 400%;
+  border: 0.3rem dashed rgba(255,255, 0, 0.1);
+  position: absolute;
+  border-radius: 50%;
+  top: -157%;
+  left:-159%;
+  animation: clock 30s linear infinite;
+}
+.sun::after{
+  width: 195%;
+  height: 195%;
+  top: -55%;
+  left: -55%;
+  transform: translate(-50%, -50%);
+  border: 0.2rem dashed hotpink;
+  opacity: 0.2;
+  animation-duration: 20s;
+}
+.earth, .mer {
+  width: 2rem;
+  height: 2rem;
+  background: green;
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00bfff, #006994);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  animation: rotateAround 10s linear infinite;
+}
+.mer {
+  width: 1rem;
+  height: 1rem;
+  background: radial-gradient(circle, red, hotpink);
+  animation: rotateAround 8s linear infinite;
+  z-index: 1;
+}
+.earth::before{
+  content: "";
+  display: block;
+  width:400%;
+  height: 400%;
+  border: 0.05rem dashed rgba(0,255,255, 0.3);
+  position: absolute;
+  border-radius: 50%;
+  top: -152.5%;
+  left:-152.5%;
+  animation: clock 5s linear infinite;
+}
+.land {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  background: #2e8b57; /* Зеленая земля */
+  border-radius: 50%;
+  opacity: 0.3;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.moon {
+  width:1rem;
+  height: 1rem;
+  background: black;
+  background: radial-gradient(circle, #eee, #000);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  animation: rotateAround 3s linear infinite;
+  position: absolute;
+  top:50%;
+  left:50%;
+}
+@keyframes rotateAround {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(400%);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(400%);
+  }
+}
+
+.clock {
+  position: absolute;
+  width:10rem;
+  height:10rem;
+  border-radius: 50%;
+  border:0.2rem dotted blue;
+  animation: clock 40s linear infinite;
+  position: relative;
+}
+.hour {
+  position: absolute;
+  width: 9.5rem;
+  height: 9.5rem;
+  border-radius: 50%;
+  border: 0.2rem dotted yellowgreen;
+  background:transparent;
+  animation: hour 40s linear infinite;
+  top:0.05rem;
+  left:0.05rem;
+}
+@keyframes clock {
+  0%{transform: rotate(0deg)}
+  100%{transform: rotate(360deg)}
+}
+@keyframes hour {
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
+.block4 {
+  position: absolute;
+  background: red;
+  top:100px;
+  left:100px;
+  right: 100px;
+  bottom: 100px;
+}
+
+#block {
+  width: 0.5em;
+  color: #fff;
+  overflow: hidden;
+  font-size: 34px;
+  margin: auto;
+}
+#number{
+  display: inline-block;
+}
+#number.anime {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration:  9s;
+  transition-timing-function: steps(9, end);
+}
+
+.circle {
+  background-color: red;
+  border-radius: 50%;
+  animation:ball 3s infinite;
+  animation-timing-function: steps(5, end);
+  margin-left: 150px;
+  transform: translate(-50%, -50%)
+}
+@keyframes ball {
+  0% {width: 0; height: 0;}
+  100% {width: 100px; height: 100px;}
+}
